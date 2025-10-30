@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ebru Studio — Elegant Turkish UI (Combined)</title>
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="pattern"></div>
+  <div class="app">
+    <!-- Left: Tools -->
+    <aside class="panel">
+      <div class="brand">
+        <div class="logo">E</div>
+        <div>
+          <h1>Ebru Studio</h1>
+          <p>Traditional marbling, modern control</p>
+        </div>
+      </div>
+
+      <div class="tools">
+        <div class="tool" data-tool="drop">
+          <div class="icon">●</div>
+          <div>
+            <h3>Brush / Drop</h3>
+            <small>Splatter paint onto surface</small>
+          </div>
+        </div>
+        <div class="tool" data-tool="awl">
+          <div class="icon">↕</div>
+          <div>
+            <h3>Awl</h3>
+            <small>Apply color or pull patterns</small>
+          </div>
+        </div>
+        <div class="tool" data-tool="comb">
+          <div class="icon">≋</div>
+          <div>
+            <h3>Comb</h3>
+            <small>Shape & ripple</small>
+          </div>
+        </div>
+        <div class="tool" data-tool="pull">
+          <div class="icon">➤</div>
+          <div>
+            <h3>Directional Pull</h3>
+            <small>Move paint across surface</small>
+          </div>
+        </div>
+      </div>
+
+      <hr style="margin:16px 0;border:none;border-top:1px dashed rgba(0,0,0,0.06)">
+
+      <div class="controls-group">
+        <div class="control">
+          <label>Brush Radius</label>
+          <input type="range" id="brushRadius" min="1" max="120" value="28">
+        </div>
+        <div class="control">
+          <label>Flow / Opacity</label>
+          <input type="range" id="flow" min="1" max="100" value="80">
+        </div>
+        <div class="control">
+          <label>Drop Expansion (ms)</label>
+          <input type="range" id="expand" min="0" max="1200" value="300">
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center: Canvas -->
+    <main class="stage">
+      <div class="controls">
+        <div class="presets">
+          <div class="preset">Classic Arch</div>
+          <div class="preset">Çintemani</div>
+          <div class="preset">Rumi Waves</div>
+        </div>
+        <div class="footer-actions">
+          <button class="btn ghost" id="undo">Undo</button>
+          <button class="btn ghost" id="redo">Redo</button>
+          <button class="btn primary" id="export">Export</button>
+        </div>
+      </div>
+
+      <div class="canvas-wrap panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <div style="font-weight:600">Live Marbling</div>
+          <div style="font-size:13px;color:var(--muted)">Tip: Left-click to add drops • Drag to pull</div>
+        </div>
+
+        <div class="canvas-area">
+          <!-- The visible canvas (scaled) -->
+          <canvas id="displayCanvas" style="max-width:100%;height:auto;"></canvas>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;gap:16px">
+        <div style="display:flex;gap:8px;align-items:center">
+          <label style="font-size:13px;color:var(--muted)">Paper Size</label>
+          <select id="paperSize" style="padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)">
+            <option>A4</option>
+            <option>Letter</option>
+            <option>Custom</option>
+          </select>
+        </div>
+        <div style="font-size:13px;color:var(--muted)">Created with traditional-inspired algorithms</div>
+      </div>
+    </main>
+
+    <!-- Right: Palette & Layers -->
+    <aside class="panel">
+      <div class="section-title"><h3 style="margin:0">Palette</h3><small style="color:var(--muted)">Save & edit</small></div>
+      <div class="palette" id="palette"></div>
+      <div style="height:14px"></div>
+      <div class="section-title"><h3 style="margin:0">Layers</h3><small style="color:var(--muted)">Blend & reorder</small></div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="padding:10px;border-radius:10px;background:rgba(0,0,0,0.02);display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:600">Base Water</div>
+            <small style="color:var(--muted)">Density: 0.9</small>
+          </div>
+          <div><small style="color:var(--muted)">●●●</small></div>
+        </div>
+        <div style="padding:10px;border-radius:10px;background:rgba(0,0,0,0.02);display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:600">Top Paint</div>
+            <small style="color:var(--muted)">Opacity: 0.82</small>
+          </div>
+          <div><small style="color:var(--muted)">●●●</small></div>
+        </div>
+      </div>
+
+      <hr style="margin:16px 0;border:none;border-top:1px dashed rgba(0,0,0,0.06)">
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="control">
+          <label>Color Mixer</label>
+          <input type="color" id="colorPicker" value="#c46a3a">
+        </div>
+        <div class="control">
+          <label>Blend Mode</label>
+          <select id="blendMode">
+            <option>Normal</option>
+            <option>Multiply</option>
+            <option>Screen</option>
+            <option>Overlay</option>
+          </select>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
