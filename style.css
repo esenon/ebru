@@ -7,91 +7,53 @@
     --glass: rgba(255,255,255,0.7);
     --shadow: 0 6px 18px rgba(20,20,20,0.08);
     --radius:16px;
-}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:#2b2b2b}
-
-.pattern { position:fixed;left:0;top:0; width:420px;height:420px; pointer-events:none; opacity:0.12;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:#2b2b2b}
+  
+  .pattern { position:fixed;left:0;top:0; width:420px;height:420px; pointer-events:none; opacity:0.12;
     background-image: radial-gradient(circle at 20% 20%, rgba(0,0,0,0.02) 0 2px, transparent 2px), repeating-conic-gradient(from 0deg, rgba(0,0,0,0.02) 0deg 30deg, transparent 30deg 60deg);
     transform: rotate(12deg) translate(-30px,-30px); border-radius:0 0 220px 0;
-}
-
-.app{
-    display:grid;
-    grid-template-columns:290px 1fr 320px;
-    gap:24px;
-    align-items:start;
-    padding:36px;
-    min-height:100vh;
-}
-
-.panel{background:linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-.brand{display:flex;gap:12px;align-items:center;margin-bottom:14px}
-.brand .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:Playfair Display}
-.brand h1{font-family:Playfair Display;font-size:18px;margin:0}
-.brand p{margin:0;color:var(--muted);font-size:13px}
-
-.tools{display:flex;flex-direction:column;gap:8px}
-.tool{display:flex;align-items:center;padding:10px;border-radius:10px;cursor:pointer}
-.tool:hover{background:linear-gradient(90deg, rgba(43,122,111,0.06), rgba(196,106,58,0.03))}
-.tool .icon{width:34px;height:34px;border-radius:8px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--accent)}
-.tool h3{margin:0;font-size:14px}
-.tool small{color:var(--muted)}
-
-.stage{display:flex;flex-direction:column;gap:12px}
-.presets{display:flex;gap:8px}
-.preset{padding:6px 10px;border-radius:10px;background:rgba(0,0,0,0.03);font-size:13px}
-
-.canvas-wrap{background:linear-gradient(180deg, #eef6f2, #fbfaf9);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
-
-/* ✅ RESTORED ORIGINAL CANVAS SIZE */
-.canvas-area{
-    width:100%;
-    height:520px;
-    border-radius:12px;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.04), transparent 30%);
-}
-
-#displayCanvas { width: 100%; height: auto; display:block; }
-
-.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.palette{display:flex;flex-wrap:wrap;gap:8px}
-.swatch{width:36px;height:36px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);cursor:pointer;border:2px solid rgba(0,0,0,0.03)}
-.controls-group{display:flex;flex-direction:column;gap:10px}
-.control{display:flex;flex-direction:column;gap:6px}
-.control label{font-size:13px;color:var(--muted)}
-.control input[type=range]{width:100%}
-
-.footer-actions{display:flex;gap:10px}
-.btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
-.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
-.btn.ghost{background:transparent;border:1px solid rgba(43,122,111,0.12);color:var(--accent)}
-
-/* ============================
-   ✅ RESPONSIVE IMPROVEMENTS
-   ============================ */
-
-/* iPad Landscape — shrink side panels, canvas gets more space */
-@media (max-width:1200px){
-  .app{grid-template-columns:230px 1fr 250px;}
-}
-
-/* iPad Portrait — hide right panel, canvas = main focus */
-@media (max-width:950px){
-  .app{grid-template-columns:260px 1fr;}
-  .app > aside:last-child{display:none;}
-  .canvas-area{height:65vh;}
-}
-
-/* Mobile — full width canvas, panels stack vertically */
-@media (max-width:700px){
-  .app{display:flex;flex-direction:column;padding:18px;}
-  aside.panel{width:100%;}
-  .canvas-area{height:70vh;}
-  .tools .tool{padding:12px;}
-  .btn{font-size:14px;}
-}
+  }
+  
+  .app{display:grid;grid-template-columns:290px 1fr 320px;gap:24px;align-items:start;padding:36px;min-height:100vh}
+  
+  .panel{background:linear-gradient(180deg, rgba(255,255,255,0.9), var(--card));border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  .brand{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+  .brand .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-family:Playfair Display}
+  .brand h1{font-family:Playfair Display;font-size:18px;margin:0}
+  .brand p{margin:0;color:var(--muted);font-size:13px}
+  
+  .tools{display:flex;flex-direction:column;gap:8px}
+  .tool{display:flex;align-items:center;padding:10px;border-radius:10px;cursor:pointer}
+  .tool:hover{background:linear-gradient(90deg, rgba(43,122,111,0.06), rgba(196,106,58,0.03))}
+  .tool .icon{width:34px;height:34px;border-radius:8px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--accent)}
+  .tool h3{margin:0;font-size:14px}
+  .tool small{color:var(--muted)}
+  
+  .stage{display:flex;flex-direction:column;gap:12px}
+  .presets{display:flex;gap:8px}
+  .preset{padding:6px 10px;border-radius:10px;background:rgba(0,0,0,0.03);font-size:13px}
+  
+  .canvas-wrap{background:linear-gradient(180deg, #eef6f2, #fbfaf9);border-radius:18px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+  .canvas-area{width:100%;height:520px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center; background:conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.04), transparent 30%)}
+  #displayCanvas { width: 100%; height: auto; display:block; }
+  
+  .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .palette{display:flex;flex-wrap:wrap;gap:8px}
+  .swatch{width:36px;height:36px;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.06);cursor:pointer;border:2px solid rgba(0,0,0,0.03)}
+  .controls-group{display:flex;flex-direction:column;gap:10px}
+  .control{display:flex;flex-direction:column;gap:6px}
+  .control label{font-size:13px;color:var(--muted)}
+  .control input[type=range]{width:100%}
+  
+  .footer-actions{display:flex;gap:10px}
+  .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+  .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff}
+  .btn.ghost{background:transparent;border:1px solid rgba(43,122,111,0.12);color:var(--accent)}
+  
+  @media (max-width:1100px){
+    .app{grid-template-columns:1fr;grid-template-rows:auto 1fr auto;padding:18px}
+    .canvas-wrap .canvas-area{height:360px}
+  }
+  
